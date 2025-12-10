@@ -1,0 +1,11 @@
+#pgzero
+
+# Ventana de juego hecha de celdas
+cell = Actor('border') 
+size_w = 5 # Anchura del campo en celdas
+size_h = 5 # Altura del campo en celdas
+WIDTH = cell.width * size_w 
+HEIGHT = cell.height * size_h 
+
+TITLE = "Mazmorras" # Título de la ventana de juego
+FPS = 30 # Número de fotogramas por segundo

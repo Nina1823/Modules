@@ -1,0 +1,88 @@
+#pgzero
+import random
+
+# Configuración del tamaño de la ventana
+WIDTH = 600
+HEIGHT = 300
+
+player = Actor('hero', (400, 300), size=(70, 70))
+
+star = Actor('star', size=(30, 30))
+star.pos = random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)
+
+# Inicialización de los enemigos
+enemies = []
+for i in range(7):
+    enemy = Actor('enemy', size=(30, 30))
+    enemy.pos = random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)
+    enemy.speed_x = random.choice([2, -2])  # Velocidad del enemigo en el eje X
+    enemy.speed_y = random.choice([2, -2])  # Velocidad del enemigo en el eje Y
+    enemies.append(enemy)
+
+# Inicialización del fondo
+background = Actor('background')
+
+# Declarando la variable score y el bool game-over
+score = 0
+game_over = False
+
+def draw():
+    screen.clear()
+    background.draw()
+    if not game_over:
+        player.draw()
+        star.draw()
+        for enemy in enemies:
+            enemy.draw()
+        screen.draw.text(score, (10, 10), color='white')
+    else:
+        screen.draw.text('¡Has perdido! Pulse R para reiniciar', center=(WIDTH // 2, HEIGHT // 2), fontsize=30, color='red')
+
+def update(dt):
+    global score, game_over
+
+    if game_over:
+        if keyboard.r:
+            restart_game()
+        return
+
+    # Controles del jugador
+    if keyboard.left and player.left > 0:
+        player.x -= 10
+    if keyboard.right and player.right < WIDTH:
+        player.x += 10
+    if keyboard.up and player.top > 0:
+        player.y -= 10
+    if keyboard.down and player.bottom < HEIGHT:
+        player.y += 10
+
+    # Verificar colisión con la estrella
+    if player.colliderect(star):
+        score += 1
+        star.pos = random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)
+
+    # Movimiento de los enemigos y verificación de colisiones
+    for enemy in enemies:
+        enemy.x += enemy.speed_x
+        enemy.y += enemy.speed_y
+
+        # Cambiar dirección de los enemigos al llegar al borde de la pantalla
+        if enemy.left < 0 or enemy.right > WIDTH:
+            enemy.speed_x = -enemy.speed_x
+        if enemy.top < 0 or enemy.bottom > HEIGHT:
+            enemy.speed_y = -enemy.speed_y
+
+        # Verificar colisión con un enemigo
+        if player.colliderect(enemy):
+            game_over = True
+
+def restart_game():
+    global score, game_over
+    player.pos = 400, 300
+    star.pos = random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)
+    for enemy in enemies:
+        enemy.pos = random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)
+        enemy.speed_x = random.choice([2, -2])
+        enemy.speed_y = random.choice([2, -2])
+    score = 0
+    game_over = False
