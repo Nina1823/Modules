@@ -115,12 +115,12 @@ def on_key_down(key):
                 sword.pos = enemy.pos 
                 swords.append(sword) 
                 
-def update(dt): #🔴🟢🔵🟡
-    for i in range(len(hearts)): #🔴🟢🔵🟡
-        if char.colliderect(hearts[i]):  #🔴🟢🔵🟡
-            char.health += 5  #🔴🟢🔵🟡
-            hearts.pop(i)  #🔴🟢🔵🟡
-            break  #🔴🟢🔵🟡
+def update(dt): #🔴
+    for i in range(len(hearts)): #🔴
+        if char.colliderect(hearts[i]):  #🔴
+            char.health += 5  #🔴
+            hearts.pop(i)  #🔴
+            break  #🔴
         
     for i in range(len(swords)):
         if char.colliderect(swords[i]):

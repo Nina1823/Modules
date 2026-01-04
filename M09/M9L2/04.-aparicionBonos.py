@@ -33,15 +33,15 @@ char.attack = 5
 attack_message = "" 
 
 enemies = [] 
-hearts = [] #🔴🟢🔵🟡
-swords = [] #🔴🟢🔵🟡
+hearts = [] #🔴
+swords = [] #🔴
 for i in range(5):
     x = random.randint(1, 7) * cell.width 
     y = random.randint(1, 7) * cell.height 
     enemy = Actor("enemy", topleft = (x, y)) 
     enemy.health = random.randint(10, 20) 
     enemy.attack = random.randint(5, 10) 
-    enemy.bonus = random.randint(0, 2) #🔴🟢🔵🟡
+    enemy.bonus = random.randint(0, 2) #🔴
     enemies.append(enemy) 
 
 def map_draw():
@@ -76,10 +76,10 @@ def draw():
         enemies[i].draw() 
     if attack_message:
         screen.draw.text(attack_message, center=(150, 475), color="red", fontsize=15) 
-    for i in range(len(hearts)): #🔴🟢🔵🟡
-        hearts[i].draw() #🔴🟢🔵🟡
-    for i in range(len(swords)): # 🔴🟢🔵🟡
-        swords[i].draw() #🔴🟢🔵🟡
+    for i in range(len(hearts)): #🔴
+        hearts[i].draw() #🔴
+    for i in range(len(swords)): # 🔴
+        swords[i].draw() #🔴
 
 def on_key_down(key):
     global attack_message 
@@ -105,12 +105,12 @@ def on_key_down(key):
         char.x = old_x 
         char.y = old_y 
         if enemy.health <= 0: 
-            enemies.pop(enemy_index) #🔴🟢🔵🟡
-            if enemy.bonus == 1: #🔴🟢🔵🟡
-                heart = Actor('heart') #🔴🟢🔵🟡
-                heart.pos = enemy.pos #🔴🟢🔵🟡
-                hearts.append(heart) #🔴🟢🔵🟡
-            elif enemy.bonus == 2: #🔴🟢🔵🟡
-                sword = Actor('sword') #🔴🟢🔵🟡
-                sword.pos = enemy.pos #🔴🟢🔵🟡
-                swords.append(sword) #🔴🟢🔵🟡
+            enemies.pop(enemy_index) #🔴
+            if enemy.bonus == 1: #🔴
+                heart = Actor('heart') #🔴
+                heart.pos = enemy.pos #🔴
+                hearts.append(heart) #🔴
+            elif enemy.bonus == 2: #🔴    
+                sword = Actor('sword') #🔴
+                sword.pos = enemy.pos #🔴
+                swords.append(sword) #🔴

@@ -46,7 +46,7 @@ def map_draw():
                 cell3.draw() 
 
 def draw():
-    screen.fill("#2f3542") # 🟢🔵🟡
+    screen.fill("#2f3542") # 
     map_draw()
     char.draw()
     screen.draw.text("HP:", center=(25, 375), color = 'white', fontsize = 20) # 🟢🔵🟡

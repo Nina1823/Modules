@@ -52,14 +52,28 @@ def draw():
     screen.draw.text(char.health, center=(325, 10), color = 'white', fontsize = 16)
     screen.draw.text(char.attack, center=(325, 25), color = 'white', fontsize = 16)
 
+# Función que se ejecuta cuando el jugador presiona una tecla
 def on_key_down(key):
-    if keyboard.right and char.x + cell.width < WIDTH - cell.width: # 🟢🔵🟡
+    # Si se presiona la flecha derecha y el personaje no sale del borde derecho
+    if keyboard.right and char.x + cell.width < WIDTH - cell.width:
+        # Mueve el personaje una celda hacia la derecha
         char.x += cell.width
+        # Cambia la imagen del personaje para que mire hacia adelante
         char.image = 'stand'
-    elif keyboard.left and char.x - cell.width > cell.width: # 🟢🔵🟡
+
+    # Si se presiona la flecha izquierda y el personaje no sale del borde izquierdo
+    elif keyboard.left and char.x - cell.width > cell.width:
+        # Mueve el personaje una celda hacia la izquierda
         char.x -= cell.width
+        # Cambia la imagen del personaje para que mire hacia la izquierda
         char.image = 'left'
-    elif keyboard.down and char.y + cell.height < HEIGHT - cell.height: # 🟢🔵🟡
+
+    # Si se presiona la flecha abajo y el personaje no sale del borde inferior
+    elif keyboard.down and char.y + cell.height < HEIGHT - cell.height:
+        # Mueve el personaje una celda hacia abajo
         char.y += cell.height
-    elif keyboard.up and char.y - cell.height > cell.height: # 🟢🔵🟡
+
+    # Si se presiona la flecha arriba y el personaje no sale del borde superior
+    elif keyboard.up and char.y - cell.height > cell.height:
+        # Mueve el personaje una celda hacia arriba
         char.y -= cell.height

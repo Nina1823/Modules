@@ -20,9 +20,9 @@ my_map = [[0, 0, 0, 0, 0, 0, 0],
           [0, 1, 3, 1, 1, 2, 0], 
           [0, 0, 0, 0, 0, 0, 0]]
           
-char = Actor('stand') # 🟢🔵🟡
-char.health = 100 # 🟢🔵🟡
-char.attack = 5 # 🟢🔵🟡
+char = Actor('stand') # 🔴
+char.health = 100 # 🔴
+char.attack = 5 # 🔴
 
 def map_draw():
     for i in range(len(my_map)):
@@ -46,6 +46,6 @@ def map_draw():
 
 def draw():
     map_draw()
-    char.draw() # 🟢🔵🟡
-    screen.draw.text(char.health, center=(325, 10), color = 'white', fontsize = 16) # 🟢🔵🟡 background='black' / "Salud: "+str(char.health)
-    screen.draw.text(char.attack, center=(325, 25), color = 'white', fontsize = 16) # 🟢🔵🟡
+    char.draw() # 🔴
+    screen.draw.text(char.health, center=(325, 10), color = 'white', fontsize = 16) # 🔴
+    screen.draw.text(char.attack, center=(325, 25), color = 'white', fontsize = 16) # 🔴

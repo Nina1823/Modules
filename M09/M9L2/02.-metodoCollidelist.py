@@ -30,7 +30,7 @@ char.top = cell.height
 char.left = cell.width
 char.health = 100
 char.attack = 5
-attack_message = "" #🔴🟢🔵🟡
+attack_message = "" #🔴
 
 enemies = [] 
 for i in range(5):
@@ -75,7 +75,7 @@ def draw():
         screen.draw.text(attack_message, center=(150, 475), color="red", fontsize=15) #🔴🟢🔵🟡
 
 def on_key_down(key):
-    global attack_message #🔴🟢🔵🟡
+    global attack_message #🔴
     if keyboard.right and char.x + cell.width < WIDTH - cell.width:
         char.x += cell.width
         char.image = 'stand'
@@ -87,9 +87,9 @@ def on_key_down(key):
     elif keyboard.up and char.y - cell.height > cell.height:
         char.y -= cell.height
 
-    enemy_index = char.collidelist(enemies) #🔴🟢🔵🟡
-    if enemy_index != -1: #🔴🟢🔵🟡
-        enemy = enemies[enemy_index] #🔴🟢🔵🟡
-        enemy.health -= char.attack #🔴🟢🔵🟡
-        char.health -= enemy.attack #🔴🟢🔵🟡
-        attack_message = "¡Enemigo N°: " + str(enemy_index + 1) + " Ataque: " + str(enemy.attack) + "!" #🔴🟢🔵🟡
+    enemy_index = char.collidelist(enemies) #🔴
+    if enemy_index != -1: #🔴
+        enemy = enemies[enemy_index] #🔴
+        enemy.health -= char.attack #🔴
+        char.health -= enemy.attack #🔴
+        attack_message = "¡Enemigo N°: " + str(enemy_index + 1) + " Ataque: " + str(enemy.attack) + "!" #🔴

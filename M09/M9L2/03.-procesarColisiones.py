@@ -30,7 +30,7 @@ char.top = cell.height
 char.left = cell.width
 char.health = 100
 char.attack = 5
-attack_message = "" #🔴🟢🔵🟡
+attack_message = "" #🔴
 
 enemies = [] 
 for i in range(5):
@@ -76,7 +76,7 @@ def draw():
 
 
 def on_key_down(key):
-    global attack_message #🔴🟢🔵🟡
+    global attack_message #🔴
     if keyboard.right and char.x + cell.width < WIDTH - cell.width:
         char.x += cell.width
         char.image = 'stand'

@@ -51,14 +51,14 @@ def draw():
     screen.draw.text(char.attack, center=(325, 25), color = 'white', fontsize = 16) 
 
 
-def on_key_down(key): # 🟢🔵🟡
-    if keyboard.right: # 🟢🔵🟡
-        char.x += cell.width # 🟢🔵🟡
-        char.image = 'stand' # 🟢🔵🟡
-    elif keyboard.left: # 🟢🔵🟡
-        char.x -= cell.width # 🟢🔵🟡
-        char.image = 'left' # 🟢🔵🟡
-    elif keyboard.down: # 🟢🔵🟡
-        char.y += cell.height # 🟢🔵🟡
-    elif keyboard.up: # 🟢🔵🟡
-        char.y -= cell.height # 🟢🔵🟡
+def on_key_down(key): # 🔴
+    if keyboard.right: # 🔴
+        char.x += cell.width # 🔴
+        char.image = 'stand' # 🔴
+    elif keyboard.left: # 🔴
+        char.x -= cell.width # 🔴
+        char.image = 'left' # 🔴
+    elif keyboard.down: # 🔴
+        char.y += cell.height # 🔴
+    elif keyboard.up: # 🔴
+        char.y -= cell.height # 🔴
